@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('invoices/new', 'InvoicesController@create')
-    ->name('invoices.create')
+Route::get('payments/new', 'PaymentsController@create')
+    ->name('payments.create')
+    ->middleware('auth');
+
+Route::post('payments', 'PaymentsController@store')
+    ->name('payments.store')
     ->middleware('auth');
 
 Route::get('login', 'LoginController@showLoginForm')

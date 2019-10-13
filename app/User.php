@@ -28,6 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
