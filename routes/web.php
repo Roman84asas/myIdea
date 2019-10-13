@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'DashboardController@index')
-    ->name('dashboard');
+    ->name('dashboard')
+    ->middleware('auth');
 
 Route::get('payments/new', 'PaymentsController@create')
     ->name('payments.create')

@@ -1885,11 +1885,17 @@ var payments = [{
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      payments: payments
+      payments: payments,
+      activeTab: 'new'
     };
   },
-  mounted: function mounted() {
-    console.log('Component');
+  methods: {
+    fetch: function fetch() {// axios.get('...')
+    },
+    activateTab: function activateTab(tab) {
+      this.activeTab = tab;
+      this.fetch();
+    }
   }
 });
 
@@ -37190,7 +37196,54 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("nav", { staticClass: "mb-6" }, [
+      _c("ul", { staticClass: "flex list-reset" }, [
+        _c(
+          "li",
+          {
+            staticClass: "px-10 py-2",
+            class: { "active-tab": _vm.activeTab == "new" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.activateTab("new")
+              }
+            }
+          },
+          [_c("a", { attrs: { href: "#" } }, [_vm._v("New")])]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "px-10 py-2",
+            class: { "active-tab": _vm.activeTab == "sent" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.activateTab("sent")
+              }
+            }
+          },
+          [_c("a", { attrs: { href: "#" } }, [_vm._v("Sent")])]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "px-10 py-2",
+            class: { "active-tab": _vm.activeTab == "paid" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.activateTab("paid")
+              }
+            }
+          },
+          [_c("a", { attrs: { href: "#" } }, [_vm._v("Paid")])]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -37267,28 +37320,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "mb-6" }, [
-      _c("ul", { staticClass: "flex list-reset" }, [
-        _c("li", { staticClass: "px-10 py-2 border-b-3 border-teal" }, [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("New")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "px-10 py-2" }, [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("Sent")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "px-10 py-2" }, [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("Paid")])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

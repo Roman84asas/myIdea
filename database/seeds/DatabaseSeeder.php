@@ -12,5 +12,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+
+        $this->truncate();
+        $this->call(PaymentStatusSeeder::class);
+    }
+
+    public function truncate()
+    {
+        \App\PaymentStatus::truncate();
     }
 }

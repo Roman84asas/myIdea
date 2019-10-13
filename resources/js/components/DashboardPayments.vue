@@ -2,9 +2,9 @@
     <div>
         <nav class="mb-6">
             <ul class="flex list-reset">
-                <li class="px-10 py-2 border-b-3 border-teal"><a href="#">New</a></li>
-                <li class="px-10 py-2"><a href="#">Sent</a></li>
-                <li class="px-10 py-2"><a href="#">Paid</a></li>
+                <li :class="{'active-tab': activeTab == 'new'}" @click.prevent="activateTab('new')" class="px-10 py-2"><a href="#">New</a></li>
+                <li :class="{'active-tab': activeTab == 'sent'}" @click.prevent="activateTab('sent')" class="px-10 py-2"><a href="#">Sent</a></li>
+                <li :class="{'active-tab': activeTab == 'paid'}" @click.prevent="activateTab('paid')" class="px-10 py-2"><a href="#">Paid</a></li>
             </ul>
         </nav>
         <div class="lg:flex">
@@ -34,11 +34,17 @@
         data() {
             return {
                 payments: payments,
+                activeTab: 'new'
             }
         },
-
-        mounted() {
-            console.log('Component')
-        }
+        methods: {
+            fetch() {
+                // axios.get('...')
+            },
+            activateTab(tab) {
+                this.activeTab = tab;
+                this.fetch()
+            }
+        },
     }
 </script>
